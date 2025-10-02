@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pembayaran Kas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistem Pembayaran Kas</h1>
+            <p>Kelola keuangan kas dengan mudah</p>
+            <div class="header-info">
+                <span id="info-saldo">Saldo: Rp 0</span>
+                <span id="info-tanggal"></span>
+            </div>
+            <div class="header-controls">
+                <button id="btn-reset" class="reset-btn">Reset Data</button>
+                <div id="reset-info" class="reset-info"></div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Menu Utama -->
+            <section id="menu-utama" class="section aktif">
+                <h2>Menu Utama</h2>
+                <div class="menu-options">
+                    <button class="menu-btn" data-target="bayar-kas">Bayar Kas</button>
+                    <button class="menu-btn" data-target="pinjam-uang">Pinjam Uang</button>
+                    <button class="menu-btn" data-target="mutasi-keuangan">Mutasi Keuangan</button>
+                    <button class="menu-btn" data-target="data-keseluruhan">Data Keseluruhan</button>
+                </div>
+            </section>
+
+            <!-- Form Bayar Kas -->
+            <section id="bayar-kas" class="section">
+                <div class="section-header">
+                    <button class="back-btn">← Kembali</button>
+                    <h2>Bayar Kas</h2>
+                </div>
+                
+                <form id="form-bayar-kas">
+                    <div class="form-group">
+                        <label for="absen-bayar">Nomor Absen:</label>
+                        <select id="absen-bayar" required>
+                            <option value="">Pilih Nomor Absen</option>
+                            <!-- Opsi akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jumlah-bayar">Jumlah Pembayaran (Kelipatan 10.000):</label>
+                        <input type="number" id="jumlah-bayar" min="10000" step="10000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Metode Pembayaran:</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="metode-bayar" value="cash" required>
+                                <span>Cash</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="metode-bayar" value="gopay" required>
+                                <span>Gopay</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="metode-bayar" value="mandiri" required>
+                                <span>Mandiri</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="keterangan-bayar">Keterangan (Opsional):</label>
+                        <textarea id="keterangan-bayar" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Bayar Kas</button>
+                </form>
+            </section>
+
+            <!-- Form Pinjam Uang -->
+            <section id="pinjam-uang" class="section">
+                <div class="section-header">
+                    <button class="back-btn">← Kembali</button>
+                    <h2>Pinjam Uang</h2>
+                </div>
+                
+                <form id="form-pinjam-uang">
+                    <div class="form-group">
+                        <label for="absen-pinjam">Nomor Absen:</label>
+                        <select id="absen-pinjam" required>
+                            <option value="">Pilih Nomor Absen</option>
+                            <!-- Opsi akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jumlah-pinjam">Jumlah Pinjaman (Kelipatan 10.000):</label>
+                        <input type="number" id="jumlah-pinjam" min="10000" step="10000" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Metode Pencairan:</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="metode-pinjam" value="cash" required>
+                                <span>Cash</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="metode-pinjam" value="gopay" required>
+                                <span>Gopay</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="metode-pinjam" value="mandiri" required>
+                                <span>Mandiri</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal-pengembalian">Tanggal Pengembalian (Opsional):</label>
+                        <input type="date" id="tanggal-pengembalian">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="keterangan-pinjam">Keterangan Pinjaman (Opsional):</label>
+                        <textarea id="keterangan-pinjam" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Ajukan Pinjaman</button>
+                </form>
+            </section>
+
+            <!-- Mutasi Keuangan -->
+            <section id="mutasi-keuangan" class="section">
+                <div class="section-header">
+                    <button class="back-btn">← Kembali</button>
+                    <h2>Mutasi Keuangan</h2>
+                </div>
+                <div id="mutasi-content">
+                    <!-- Diisi oleh JavaScript -->
+                </div>
+            </section>
+
+            <!-- Data Keseluruhan -->
+            <section id="data-keseluruhan" class="section">
+                <div class="section-header">
+                    <button class="back-btn">← Kembali</button>
+                    <h2>Data Keseluruhan</h2>
+                </div>
+                <div id="data-keseluruhan-content">
+                    <!-- Diisi oleh JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Sistem Pembayaran Kas</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
